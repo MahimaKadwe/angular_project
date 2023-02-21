@@ -21,7 +21,7 @@ formRouter.put("/:id",auth,updateForm);
 
 formRouter.get('/allforms',auth,authforadmin,getAllForms);
 
-formRouter.get('/form/:id',auth,getFormBySurveyID);
+formRouter.get('/form/:id',getFormBySurveyID);
 
 
 

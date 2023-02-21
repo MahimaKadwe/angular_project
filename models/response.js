@@ -4,27 +4,27 @@ const mongoose = require("mongoose");
 const responseSchema = mongoose.Schema(
   {
     title:{type:String,
-      required:true
-    },
+      required:true},
 
-    responseContent: {type:String},
+    //responseContent: {type:String},
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
     
+    formId:{type:String},
+    questionId:{
+      type:String
+    },
     email:{
       type:String,
       required:true
     },
+    
     survey:{
-      type:Array
-    }
-    ,
-    formId:{type:String},
-    questionId:{
-      type:String
+      type:Array,
+      required:false
     }
   },
   { timestamps: true },

@@ -6,7 +6,8 @@ const createForm = async (req, res) => {
 
 formModel.create( {  
                         'title': req.body.title, 
-                        'description': req.body.description, 
+                        'description': req.body.description,
+                        'type': req.body.type,
                         'questions':req.body.questions,
                         'userId':req.userId
                     }, 
@@ -30,6 +31,7 @@ const updateForm = async (req, res) => {
   const newForm = {
     title: title,
     description: description,
+    type:type,
     questions:questions
   };
   try {
@@ -88,7 +90,7 @@ const getForms = async (req, res) => {
 
 
 //FOR GETTING ALL FORMS OF ALL USERS AS AN ADMIN...
-const getAllForms =async (req,res)=>{
+const getAllForms =async (req, res)=>{
 
 	try{
 		const forms=await formModel.find()
@@ -120,10 +122,10 @@ const getFormById=async(req,res)=>{
 
 const getFormBySurveyID=async(req,res)=>{
   try{
-    const form=await formModel.findOne({
-      _id:req.params.id
+    const forms=await formModel.findOne({
+      _id:req.params.id,
     })
-    res.status(200).json(form);
+    res.status(200).json(forms);
   }
   catch(error){
     console.log(error);

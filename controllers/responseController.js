@@ -9,11 +9,11 @@ const createResponse = async (req, res) => {
 
 responseModel.create( {  
                         'title':req.body.title,
-                        'survey':req.body.survey,
-                        'email':req.body.email,
-                        // 'responseContent': req.body.responseContent, 
                         'userId':req.userId,
                         'formId':req.body.formId,
+                      // 'responseContent': req.body.responseContent, 
+                        'survey':req.body.survey,
+                        'email':req.body.email,
                         // 'questionId':req.body.questionId,
                         
                     }, 
@@ -33,7 +33,7 @@ responseModel.create( {
 
 //FOR GETTING RESPONSE --> it only returns response of that user
 const getResponse = async (req, res) => {
-    let qid=req.body.questionId;
+   // let qid=req.body.questionId;
     let fid=req.body.formId;
     try {
       // const response = await responseModel.find({
@@ -41,11 +41,11 @@ const getResponse = async (req, res) => {
       //   questionId:req.body.questionId,
       //   formId:req.body.formId
       // });
-      
+      console.log(fid)
       const requiredForm=await responseModel.find({formId:fid});
-    
+      console.log(requiredForm)
     res.status(200).json({
-        requiredForm
+     requiredForm
     });
 
     
